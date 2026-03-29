@@ -16,13 +16,6 @@ const result = Array.from(products).map(product => ({
   prodCode: product.getElementsByTagName("cProd")[0].textContent,
   reference: reference
 }));
-console.log(result)
-
-// for (let i = 0; i < products.length; i++){
-//   resultParagraph.innerHTML += `
-//     <p>${result[i].prodCode} ${result[i].prodDescription} ${result[i].barcode} ${result[i].quantity} ${result[i].price}</p>
-//   `
-// }
 
 resultParagraph.innerHTML = result.map(item => `
       <tr>
