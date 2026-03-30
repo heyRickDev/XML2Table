@@ -1,6 +1,6 @@
 function process() {
-const xmlbox = document.querySelector('.xmlbox').value
-const reference = document.querySelector('.reference').value
+const reference = document.querySelector('#reference').value
+const xmlbox = document.querySelector('#xmlbox').value
 const resultParagraph = document.querySelector('.resultTable')
 const parser = new DOMParser()
 const xmlDoc = parser.parseFromString(xmlbox, "text/xml");
@@ -41,5 +41,7 @@ resultParagraph.innerHTML = result.map(item => `
         <td></td>   
       </tr>
 `).join('');
+
+navigator.clipboard.writeText(resultParagraph.innerText)
 
 }
