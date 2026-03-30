@@ -1,23 +1,23 @@
 function process() {
-const reference = document.querySelector('#reference').value
-const xmlbox = document.querySelector('#xmlbox').value
-const resultParagraph = document.querySelector('.resultTable')
-const parser = new DOMParser()
-const xmlDoc = parser.parseFromString(xmlbox, "text/xml");
+  const reference = document.querySelector('#reference').value
+  const xmlbox = document.querySelector('#xmlbox').value
+  const resultParagraph = document.querySelector('.resultTable')
+  const parser = new DOMParser()
+  const xmlDoc = parser.parseFromString(xmlbox, "text/xml");
 
-const products = xmlDoc.getElementsByTagName("prod");
+  const products = xmlDoc.getElementsByTagName("prod");
 
-const result = Array.from(products).map(product => ({
-  prodDescription: product.getElementsByTagName("xProd")[0].textContent,
-  barcode: product.getElementsByTagName("cEAN")[0].textContent,
-  quantity: product.getElementsByTagName("qCom")[0].textContent,
-  price: product.getElementsByTagName("vUnCom")[0].textContent,
-  un: product.getElementsByTagName("uCom")[0].textContent,
-  prodCode: product.getElementsByTagName("cProd")[0].textContent,
-  reference: reference
-}));
+  const result = Array.from(products).map(product => ({
+    prodDescription: product.getElementsByTagName("xProd")[0].textContent,
+    barcode: product.getElementsByTagName("cEAN")[0].textContent,
+    quantity: product.getElementsByTagName("qCom")[0].textContent,
+    price: product.getElementsByTagName("vUnCom")[0].textContent,
+    un: product.getElementsByTagName("uCom")[0].textContent,
+    prodCode: product.getElementsByTagName("cProd")[0].textContent,
+    reference: reference
+  }));
 
-resultParagraph.innerHTML = result.map(item => `
+  resultParagraph.innerHTML = result.map(item => `
       <tr>
         <td>${item.prodCode}</td>
         <td>${item.prodDescription}</td>
@@ -42,6 +42,6 @@ resultParagraph.innerHTML = result.map(item => `
       </tr>
 `).join('');
 
-navigator.clipboard.writeText(resultParagraph.innerText)
+  navigator.clipboard.writeText(resultParagraph.innerText)
 
 }

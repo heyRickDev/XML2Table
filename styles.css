@@ -3,47 +3,55 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin: 50px 0;
 }
+
 .page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 50px;
-  gap: 10px;
 }
+
 .inputwrapper {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   max-width: 100px;
 }
+
 .textareawrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
-label, button {
+
+label,
+button {
   font-size: 20px;
 }
+
 input {
   padding: 10px;
 }
+
 #xmlbox {
   width: 500px;
   height: 250px;
   padding: 10px;
 }
+
 button {
   width: fit-content;
   padding: 10px;
 }
+
 table {
-  background-color: lightgray;
-  overflow-y: scroll;
+  background: radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(168, 223, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
   display: flex;
 }
-
