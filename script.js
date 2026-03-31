@@ -9,7 +9,7 @@ function process() {
 
   const result = Array.from(products).map(product => ({
     prodDescription: product.getElementsByTagName("xProd")[0].textContent,
-    barcode: product.getElementsByTagName("cEAN")[0].textContent,
+    prodBarcode: product.getElementsByTagName("cEAN")[0].textContent,
     quantity: product.getElementsByTagName("qCom")[0].textContent,
     price: product.getElementsByTagName("vUnCom")[0].textContent,
     un: product.getElementsByTagName("uCom")[0].textContent,
@@ -17,9 +17,12 @@ function process() {
     reference: reference
   }));
 
-  resultParagraph.innerHTML = result.map(item => `
+
+  resultParagraph.innerHTML = result.map(item => {
+    const isBarcode = item.prodBarcode !== "SEM GTIN"
+    return `
       <tr>
-        <td>${item.prodCode}</td>
+        <td>${isBarcode ? item.prodBarcode : item.prodCode}</td>
         <td>${item.prodDescription}</td>
         <td>UN</td>
         <td>${item.price}</td>
@@ -40,7 +43,8 @@ function process() {
         <td></td>   
         <td></td>   
       </tr>
-`).join('');
+`
+  }).join('');
 
   navigator.clipboard.writeText(resultParagraph.innerText)
 
