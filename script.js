@@ -1,3 +1,10 @@
+function formatPrice(price) {
+  if (price.includes('.')) {
+    return price.replace('.', ',')
+  }
+  return price
+}
+
 function importXmlFile() {
   const fileInput = document.querySelector('#xmlFileInput')
   fileInput.click()
@@ -41,7 +48,7 @@ function process() {
         <td>${isBarcode ? item.prodBarcode : item.prodCode}</td>
         <td>${item.prodDescription}</td>
         <td>UN</td>
-        <td>${item.price}</td>
+        <td>${formatPrice(item.price)}</td>
         <td>100</td>
         <td></td>   
         <td></td>   
