@@ -1,3 +1,19 @@
+function importXmlFile() {
+  const fileInput = document.querySelector('#xmlFileInput')
+  fileInput.click()
+
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        document.querySelector('#xmlbox').value = e.target.result
+      }
+      reader.readAsText(file)
+    }
+  })
+}
+
 function process() {
   const reference = document.querySelector('#reference').value
   const xmlbox = document.querySelector('#xmlbox').value
@@ -30,7 +46,7 @@ function process() {
         <td></td>   
         <td></td>   
         <td></td>   
-        <td>${item.quantity}</td>   
+        <td>${item.quantity}</td>  
         <td></td>   
         <td>FERRAGENS</td>
         <td>geral</td>   

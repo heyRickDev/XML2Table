@@ -11,13 +11,15 @@
 <body>
     <div class="page">
         <header>
-              <div class="inputwrapper">
+            <div class="inputwrapper">
                 <label for="reference">Fornecedor</label>
                 <input type="text" id="reference">
             </div>
             <div class="textareawrapper">
                 <textarea placeholder="Insira aqui o XML da NF" id="xmlbox"></textarea>
+                <button onclick="importXmlFile()">Importar XML</button>
                 <button onclick="process()">Processar</button>
+                <input type="file" id="xmlFileInput" accept=".xml" style="display: none;">
             </div>
         </header>
         <main>
